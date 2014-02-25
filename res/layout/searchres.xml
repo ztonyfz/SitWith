@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_login"
+    android:orientation="vertical" >
+
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:id="@+id/bookmanagement_selectbooklinearlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dip"
+            android:layout_marginRight="7dip"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dip"
+                android:layout_marginRight="7dip"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dip"
+                    android:gravity="center_vertical"
+                    android:text="Restaurant:"
+                    android:textColor="#222222"
+                    android:textSize="18dip" />
+
+                <EditText
+                    android:id="@+id/bookmanagementisbnedit"
+                    android:layout_width="100dip"
+                    android:layout_height="38dip"
+                    android:textColor="#222222"
+                    android:textSize="16dip" >
+                </EditText>
+
+                <Button
+                    android:id="@+id/buttonbookmanagement_selectbook"
+                    android:layout_width="80dip"
+                    android:layout_height="40dip"
+                    android:background="@drawable/blue_button"
+                    android:text="search" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bookmanagement_insertbooklinearlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="invisible" >
+        </LinearLayout>
+    </FrameLayout>
+
+    <ListView android:id="@+id/prodMainView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" />
+
+</LinearLayout>
