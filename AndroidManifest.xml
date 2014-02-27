@@ -18,11 +18,10 @@
         <activity
             android:name="com.example.sitwith.MainActivity"
             android:label="@string/app_name" >
+            
         </activity>
         <activity android:name="com.example.sitwith.LoginActivity" >
-        </activity>
-        <activity android:name="com.example.sitwith.MainPageActivity" >
-            <intent-filter>
+        	<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -32,6 +31,9 @@
             
             
             </intent-filter>
+        </activity>
+        <activity android:name="com.example.sitwith.MainPageActivity" >
+            
         </activity>
         <activity android:name="com.example.sitwith.Select_Restaurant_Activity" >
         </activity>
