@@ -11,8 +11,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dip"
-        android:padding="5dip"
-         >
+        android:padding="5dip" >
 
         <TextView
             android:id="@+id/restaurant_select_label"
@@ -26,13 +25,12 @@
 
         <RelativeLayout
             android:id="@+id/restaurant_title"
+            style="@style/normalText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
             android:layout_below="@id/restaurant_select_label"
-            android:padding="5dip"
-            style="@style/normalText"
-             >
+            android:layout_margin="5dip"
+            android:padding="5dip" >
 
             <TextView
                 android:id="@+id/textResName"
@@ -53,8 +51,8 @@
                 android:id="@+id/textResLocation"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Location" 
                 android:layout_toRightOf="@id/textResNeiborhood"
+                android:text="Location"
                 android:textColor="#FFFFFF" />
         </RelativeLayout>
 
@@ -63,8 +61,13 @@
             style="@style/titleText"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
+            android:layout_below="@id/restaurant_title"
             android:divider="@drawable/divider"
-            android:layout_below="@id/restaurant_title" >
+            android:dividerHeight="1dp"
+            android:drawSelectorOnTop="false"
+            android:footerDividersEnabled="false"
+            android:headerDividersEnabled="false"
+            android:scrollingCache="false" >
         </ListView>
     </RelativeLayout>
 

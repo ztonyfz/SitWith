@@ -139,6 +139,7 @@ public class Restaurant_Information_Activity extends Activity {
 		AvailTableListAdapter listAdapter = new AvailTableListAdapter(this,
 				R.layout.available_table_listview, availabletables);
 		listview.setAdapter(listAdapter);
+		listview.setDividerHeight(10);
 
 		listview.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
