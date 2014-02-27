@@ -96,35 +96,20 @@ public class MainActivity extends FragmentActivity {
             mainFragment = new MainFragment();  
             getSupportFragmentManager()
             .beginTransaction()  
-            .add(android.R.id.content, mainFragment)  
-            .commit();  
+            .add(android.R.id.content, mainFragment)
+            .commit();
 		} else {
           // Or set the fragment from restored state info  
            mainFragment = (MainFragment) getSupportFragmentManager()  
-           .findFragmentById(android.R.id.content);  
+           .findFragmentById(android.R.id.content);
 		}
-		setContentView(R.layout.activity_main);
-
-		Button btLogin = (Button) this
-				.findViewById(R.id.get_in_button);
-
-		btLogin.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, LoginActivity.class);
-				startActivity(intent);
-				finish();// stop the current activity
-			}
-
-		});
+		setContentView(R.layout.login);
 
 		//Log.i("test", "test");
 			
 		//test();
 		
-		handler.postDelayed(checker, 500);
+		//handler.postDelayed(checker, 500);
 		//test();
 	}
 

@@ -53,7 +53,7 @@ public class MainFragment extends Fragment{
     @Override  
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  
             Bundle savedInstanceState) {  
-        View view = inflater.inflate(R.layout.activity_main, container, false);  
+        View view = inflater.inflate(R.layout.login, container, false);  
   
         LoginButton authButton = (LoginButton) view  
                 .findViewById(R.id.login_button);
@@ -73,6 +73,10 @@ public class MainFragment extends Fragment{
                 	SitWithSession session = new SitWithSession();
                 	session.userId = user.getId();
                 	Global.session = session;
+                	
+                	Bundle bundle = new Bundle();
+                	Intent intent = new Intent(getActivity(), MainPageActivity.class); // create intent object
+    				startActivity(intent); // start activity
                 }
             }).executeAsync();
 			
