@@ -45,6 +45,7 @@ public class Select_Restaurant_Activity extends Activity {
 		}*/
 		for (Neiborhood neiborhood : neiborhoods) {
 			for (Restaurant restaurant : neiborhood.restaurants) {
+				restaurant.neiborhood = neiborhood.name;
 				list.add(restaurant);
 				resIDList.add(restaurant.id);
 			}
