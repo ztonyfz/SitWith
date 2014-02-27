@@ -38,13 +38,15 @@ public class MainPageActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
 				switch (position) {
-				case 0:
-				{
-					startActivity(new Intent(MainPageActivity.this,
-							Select_Restaurant_Activity.class));
-				}
-					break;
-				
+					case 0: {
+						startActivity(new Intent(MainPageActivity.this,
+								Select_Restaurant_Activity.class));
+					}break;
+					case 1: {
+						startActivity(new Intent(MainPageActivity.this,
+								Check_History_Activity.class));
+					}break;
+
 				}
 			}
 		});

@@ -15,9 +15,30 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="313dp"
         android:background="@android:color/darker_gray"
         android:text="Please Login First"
-        android:textColorLink="@android:color/black" />
+        android:textColorLink="@android:color/black"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="20dp"
+        />
+    
+    <Button
+            android:id="@+id/get_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/enterLogin_button"
+            android:layout_marginLeft="45dp"
+            android:background="@drawable/blue_button"
+            android:text="@string/login_label_signin" />
+
+    <com.facebook.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/enterLogin_button"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="36dp" />
 
 </RelativeLayout>
