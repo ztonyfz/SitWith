@@ -51,6 +51,8 @@ public class RequestService {
 	    	request.status = requestE.getChildText("status");
 	    	request.time = new Date(Long.parseLong(requestE.getChildText("time")));
 	    	request.restaruantName = requestE.getChildText("restaurant");
+	    	request.tableId = requestE.getChildText("table");
+	    	request.notificationStatus = requestE.getChildText("notificationStatus");
 	    	
 	    	requests.add(request);
 	    }
@@ -58,7 +60,7 @@ public class RequestService {
 	    return requests;
 	}
 	
-	public List<User> getTable(String tableId) {
+	public Table getTable(String tableId) {
 		SAXBuilder builder = new SAXBuilder(XMLReaders.NONVALIDATING);
 		Document doc = null;
 		try {
@@ -71,19 +73,35 @@ public class RequestService {
 			e.printStackTrace();
 		}
 		
+		Table table = new Table();
 		Element root = doc.getRootElement();
-		List<User> users = new ArrayList<User>();
-		List<Element> usersE = root.getChildren();
+		table.count = Integer.parseInt(root.getChildText("count"));
+		List<Element> usersE = root.getChildren("user");
 	    for (Element userE : usersE) {
 	    	User user = new User();
 	    	user.fullname = userE.getChildText("fullname");
 	    	user.gender = userE.getChildText("gender");
 	    	user.age = Integer.parseInt(userE.getChildText("age"));
 	    	
-	    	users.add(user);
+	    	table.users.add(user);
 	    }
 	    
-	    return users;
+	    return table;
+		
+	}
+
+	public void changeToNotified(String requestId) {
+		SAXBuilder builder = new SAXBuilder(XMLReaders.NONVALIDATING);
+		Document doc = null;
+		try {
+			doc = builder.build(Constants.SERVER_ADDRESS + "/changeToNotified?request_id=" + requestId);
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

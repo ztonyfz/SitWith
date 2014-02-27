@@ -70,10 +70,15 @@ public class MainFragment extends Fragment{
                 public void onCompleted(GraphUser user, Response response) {
                 	Log.i("facebook", user.getId());
                 	userService.login(user.getId(), user.getUsername(), user.getFirstName(), user.getLastName(), 23, "male");
+                	SitWithSession session = new SitWithSession();
+                	session.userId = user.getId();
+                	Global.session = session;
                 }
             }).executeAsync();
+			
 	    } else if (state.isClosed()) {
 	        Log.i("facebook", "Logged out...");
+	        Global.session = null;
 	    }
 	}
 	

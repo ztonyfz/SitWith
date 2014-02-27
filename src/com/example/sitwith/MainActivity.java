@@ -1,39 +1,22 @@
 package com.example.sitwith;
 
-import java.io.IOException;
-import java.net.URL;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
-import org.jdom2.input.sax.XMLReaders;
-
-import com.facebook.Request.GraphUserCallback;
-import com.facebook.Response;
 import com.facebook.Session;
-import com.facebook.SessionState;
-import com.facebook.UiLifecycleHelper;
-import com.facebook.model.GraphUser;
 
-import android.os.Bundle;
-import android.os.StrictMode;
-import android.app.Activity;
+
+import android.annotation.SuppressLint;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
-import android.util.Base64;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 import android.view.Menu;
 
@@ -49,6 +32,35 @@ public class MainActivity extends FragmentActivity {
 	
 	private FeedbackService feedbackService;
 	
+	private Handler handler = new Handler();
+	
+	private Runnable checker = new Runnable() {
+
+        @Override
+        public void run() {
+        	SitWithSession session = Global.session;
+        	Log.i("checker", "checker is working...");
+        	if (session != null) {
+        		List<Request> requests = requestService.getRequests(session.userId);
+        		for (Request request : requests) {
+        			Table table = requestService.getTable(request.tableId);
+        			Log.i("test", table.count + " " + request.notificationStatus);
+        			if (table.count == 0 && request.notificationStatus.equals("Not Notified")) {
+        				issueNotification();
+        				requestService.changeToNotified(request.id);
+        			}
+        			
+        		}
+        		
+        		
+        	}
+        	handler.postDelayed(this, 5000);
+        }
+
+		
+    };
+	
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -79,6 +91,8 @@ public class MainActivity extends FragmentActivity {
 			
 		//test();
 		
+		handler.postDelayed(checker, 500);
+		//test();
 	}
 
 	@Override
@@ -99,6 +113,23 @@ public class MainActivity extends FragmentActivity {
 		requestService.makeRequest("100002049770344", tables.get(0).id);
 		List<Request> requests = requestService.getRequests("100002049770344");
 		Log.i("request", requests.get(0).restaruantName);
+	}
+	
+	private void issueNotification() {
+		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
+        .setSmallIcon(R.drawable.com_facebook_button_blue)
+        .setContentTitle("Your Request is Confirmed")
+        .setContentText("Other users are matched. Click to view details.");
+		Intent resultIntent = new Intent(this, MainActivity.class);
+
+		TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+		stackBuilder.addParentStack(MainActivity.class);
+		stackBuilder.addNextIntent(resultIntent);
+		PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+		mBuilder.setContentIntent(resultPendingIntent);
+		NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		mNotificationManager.notify(0, mBuilder.build());
+		
 	}
 	
 	

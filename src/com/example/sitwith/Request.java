@@ -14,6 +14,8 @@ public class Request {
 	
 	public String status;
 	
+	public String notificationStatus;
+	
 	public Date time;
 
 }
