@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.facebook.Session;
 
-
 import android.annotation.SuppressLint;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -17,9 +16,27 @@ import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Intent;
+
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
+import android.support.v4.app.FragmentActivity;
+import android.util.Base64;
+
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+	
 public class MainActivity extends FragmentActivity {
 	
 	private MainFragment mainFragment;
@@ -87,13 +104,31 @@ public class MainActivity extends FragmentActivity {
            .findFragmentById(android.R.id.content);  
 		}
 		setContentView(R.layout.activity_main);
-		Log.i("test", "test");
+
+		Button btLogin = (Button) this
+				.findViewById(R.id.get_in_button);
+
+		btLogin.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, LoginActivity.class);
+				startActivity(intent);
+				finish();// stop the current activity
+			}
+
+		});
+
+		//Log.i("test", "test");
 			
 		//test();
 		
 		handler.postDelayed(checker, 500);
 		//test();
 	}
+
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -134,4 +169,5 @@ public class MainActivity extends FragmentActivity {
 	
 	
 
+	
 }

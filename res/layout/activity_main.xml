@@ -2,32 +2,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_login"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test text" />
-
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/enterLogin_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/darker_gray"
+        android:text="Please Login First"
+        android:textColorLink="@android:color/black"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="20dp"
-        android:text="Submit" />
+        />
+    
+    <Button
+            android:id="@+id/get_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/enterLogin_button"
+            android:layout_marginLeft="45dp"
+            android:background="@drawable/blue_button"
+            android:text="@string/login_label_signin" />
+
     <com.facebook.widget.LoginButton
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        />
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/enterLogin_button"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="36dp" />
 
 </RelativeLayout>
