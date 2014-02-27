@@ -13,7 +13,7 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
 
-		Button btLogin = (Button) this
+		/*Button btLogin = (Button) this
 				.findViewById(R.id.signin_button);
 
 		btLogin.setOnClickListener(new View.OnClickListener() {
@@ -26,6 +26,6 @@ public class LoginActivity extends Activity {
 				finish();// stop the current activity
 			}
 
-		});
+		});*/
 	}
 }
